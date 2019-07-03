@@ -28,6 +28,7 @@
       diff2htmlUi.highlightCode('#diff');
       var path = window.location.pathname;
       var page = path.split("/", "html", ".").pop();
+      page = page.slice(0, -5)
       $(".sdc").html(page);
     });
   </script>
