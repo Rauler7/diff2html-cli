@@ -6,7 +6,7 @@
 
   <!--
       Diff to HTML (template.html)
-      Author: rtfpessoa
+      Author: rtfpessoad
   -->
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
@@ -29,8 +29,80 @@
     });
   </script>
 </head>
+<style>.nav-bar {
+  background-color: #fff;
+  padding: 20px 0;
+  box-shadow: 0 2px 10px 0 rgba(93, 93, 93, 0.26);
+  width: 100%;
+  position: fixed;
+  z-index: 10;
+  transition: ease;
+}
+.nav-bar .logo {
+  padding: 0 8px;
+  cursor: pointer;
+  transition: none !important;
+}
+.nav-bar .title {
+  font-size: 18px;
+  line-height: 36px;
+  color: #333;
+  font-weight: 300;
+  margin: 5px 0;
+}
+.nav-bar .contact-image {
+  float: left;
+  margin: 0 15px;
+}
+.nav-bar .contact-text p {
+  margin-bottom: 0;
+  color: #333;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 14px;
+  text-align: right;
+}
+.nav-bar .contact-text p:first-child {
+  margin-bottom: 9px;
+}
+.nav-bar .contact-text p .color {
+  color: #087bb4;
+}
+@media (max-width: 575px) {
+  .nav-bar .title {
+    font-size: 14px;
+    text-align: center;
+  }
+  .nav-bar .logo {
+    padding: 4px 8px;
+  }
+}
+@media (min-width: 992px) {
+  .nav-bar .contact-text p {
+    font-size: 14px;
+  }
+}
+</style>
 <body style="text-align: center; font-family: 'Source Sans Pro',sans-serif;">
-<!-- <h1>Diff to HTML by <a href="https://github.com/rtfpessoa">rtfpessoa</a></h1> -->
+  <div class="nav-bar">
+    <div class="container">
+      <div class="row">
+        <div class="col-6 col-lg-3"> <!-- back link here -->
+          <div id="" class="logo">
+            <a><img class="img-fluid" src="./assets/images/logo-scotiabank.svg" (click)="backHome()"></a>
+          </div>
+        </div>
+        <div class="col-6 col-lg-4">
+          <span class="title">Documentación</span>
+        </div>
+        <div class="d-none d-lg-block col-lg-3 offset-lg-2">
+          <div class="contact-image">
+            <img src="./assets/images/phone.svg" id="btnLogoScotiabank">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
 <div id="diff">
   <!--diff2html-diff-->
