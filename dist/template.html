@@ -26,6 +26,9 @@
       //diff2html-fileListCloseable
       //diff2html-synchronisedScroll
       diff2htmlUi.highlightCode('#diff');
+      var path = window.location.pathname;
+      var page = path.split("/").pop();
+      $(".sdc").html(path);
     });
   </script>
 </head>
@@ -101,7 +104,7 @@
           </div>
         </div>
         <div class="">
-          <span class="title">Documentación <strong>SDC 8225</strong></span>
+          <span class="title">Documentación <strong class="sdc"></strong></span>
         </div>
         <div class="commit-id">
           Commit: 12a7054cc1b64f32efe633150a7d96dd4bc10685
