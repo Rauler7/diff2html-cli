@@ -27,8 +27,7 @@
       //diff2html-synchronisedScroll
       diff2htmlUi.highlightCode('#diff');
       var path = window.location.pathname;
-      var page = path.split("/").pop();
-      page.splice(0, -5);
+      var page = path.split("/").pop().slice(0, -5);
       $(".sdc").html(page);
     });
   </script>
