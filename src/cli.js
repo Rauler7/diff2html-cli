@@ -126,13 +126,17 @@
 
     var jsUiFilePath = path.resolve(diff2htmlPath, 'dist', 'diff2html-ui.min.js');
     var jsUiContent = utils.readFileSync(jsUiFilePath);
-
+    var lastCommit = 'git rev-parse HEAD~0';
+    var last2Commit = 'git rev-parse HEAD~1';	
+    var commitID1 = utils.runCmd(lastCommit);	
+    var commitID2 = utils.runCmd(last2Commit);
     return template
       .replace('<!--diff2html-css-->', '<style>\n' + cssContent + '\n</style>')
       .replace('<!--diff2html-js-ui-->', '<script>\n' + jsUiContent + '\n</script>')
       .replace('//diff2html-fileListCloseable', 'diff2htmlUi.fileListCloseable("#diff", ' + config.showFilesOpen + ');')
       .replace('//diff2html-synchronisedScroll', 'diff2htmlUi.synchronisedScroll("#diff", ' + config.synchronisedScroll + ');')
-      .replace('<!--diff2html-diff-->', content);
+      .replace('<!--diff2html-diff-->', content)
+      .replace('<!---commit-id-->', commitID1);
   };
 
   /*
