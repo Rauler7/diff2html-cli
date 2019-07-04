@@ -66,10 +66,6 @@
     }
 
     var diffCommand = 'git diff ' + gitArgs + ignoreString;
-    var lastCommit = 'git rev-parse HEAD~0';
-    var last2Commit = 'git rev-parse HEAD~1';
-    localStorage.commit1 = util.runCmd(lastCommit);
-    localStorage.commit2 = util.runCmd(last2Commit);
     return callback(null, utils.runCmd(diffCommand));
   };
 
@@ -143,7 +139,12 @@
    */
 
   Diff2HtmlInterface.prototype.preview = function(content, format) {
-    var filename = 'diff.' + format;
+    var lastCommit = 'git rev-parse HEAD~0';
+    var last2Commit = 'git rev-parse HEAD~1';
+    var commitID1 = util.runCmd(lastCommit);
+    var commitID2 = util.runCmd(last2Commit);
+    localStorage.commit2 = util.runCmd(last2Commit);
+    var filename = 'diff.'+commitID1+"."+commitID2 + format;
     var filePath = path.resolve(os.tmpdir(), filename);
     utils.writeFile(filePath, content);
     open(filePath);
