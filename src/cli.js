@@ -106,6 +106,7 @@
       config.synchronisedScroll = (baseConfig.synchronisedScroll === 'enabled');
 
       var htmlContent = diff2Html.getPrettyHtml(jsonContent, config);
+      console.log(htmlContent);
       return callback(null, that._prepareHTML(htmlContent, config));
     } else if (baseConfig.format === 'json') {
       return callback(null, JSON.stringify(jsonContent));
@@ -139,11 +140,7 @@
    */
 
   Diff2HtmlInterface.prototype.preview = function(content, format) {
-    var lastCommit = 'git rev-parse HEAD~0';
-    var last2Commit = 'git rev-parse HEAD~1';
-    var commitID1 = utils.runCmd(lastCommit);
-    var commitID2 = utils.runCmd(last2Commit);
-    var filename = 'diff.' + commitID1 + format;
+    var filename = 'diff.' + format;
     var filePath = path.resolve(os.tmpdir(), filename);
     utils.writeFile(filePath, content);
     open(filePath);
