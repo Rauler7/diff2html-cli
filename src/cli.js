@@ -126,11 +126,14 @@
     var jsUiFilePath = path.resolve(diff2htmlPath, 'dist', 'diff2html-ui.min.js');
     var jsUiContent = utils.readFileSync(jsUiFilePath);
     var lastCommit = 'git rev-parse HEAD~0';
-    var last2Commit = 'git rev-parse HEAD~1';
-    var projectName = "git config --local remote.origin.url|sed -n 's#.*/\([^.]*\)\.git#\1#p'";
+    var projectName = 'git config --local remote.origin.url';
     var username = 'git config user.name';
     var commitID1 = utils.runCmd(lastCommit);
-    var commitID2 = utils.runCmd(last2Commit);
+    var commitID3 = utils.runCmd(projectName);
+    var gh = require('parse-github-url');
+    var urlObj = gh(commitID3);
+    var commitURL = "https://github.com/"+urlObj.owner+"/commit/"+commitID1;
+    var finalURL = '<a href="'+commitURL+'">' + commitID1 + '</a>'
     return template
       .replace('<!--diff2html-css-->', '<style>\n' + cssContent + '\n</style>')
       .replace('<!--diff2html-js-ui-->', '<script>\n' + jsUiContent + '\n</script>')
@@ -140,6 +143,7 @@
       .replace('!---commit-id--', commitID1)
       .replace('!---project-name--', projectName)
       .replace('!---username--', username)
+      .replace('<!--commit-url-->', finalURL)
   };
 
   /*
