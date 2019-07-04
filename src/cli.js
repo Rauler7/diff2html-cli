@@ -106,7 +106,6 @@
       config.synchronisedScroll = (baseConfig.synchronisedScroll === 'enabled');
 
       var htmlContent = diff2Html.getPrettyHtml(jsonContent, config);
-      console.log(htmlContent);
       return callback(null, that._prepareHTML(htmlContent, config));
     } else if (baseConfig.format === 'json') {
       return callback(null, JSON.stringify(jsonContent));
