@@ -66,7 +66,10 @@
     }
 
     var diffCommand = 'git diff ' + gitArgs + ignoreString;
-
+    var lastCommit = 'git rev-parse HEAD~0';
+    var last2Commit = 'git rev-parse HEAD~1';
+    localStorage.commit1 = util.runCmd(lastCommit);
+    localStorage.commit2 = util.runCmd(last2Commit);
     return callback(null, utils.runCmd(diffCommand));
   };
 
