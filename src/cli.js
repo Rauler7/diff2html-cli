@@ -132,7 +132,7 @@
     var commitID3 = utils.runCmd(projectName);
     var gh = require('parse-github-url');
     var urlObj = gh(commitID3);
-    var commitURL = "https://github.com/"+urlObj.owner+"/commit/"+commitID1;
+    var commitURL = "https://github.com/"+urlObj.repo+"/commit/"+commitID1;
     var finalURL = '<a href="'+commitURL+'">' + commitID1 + '</a>'
     return template
       .replace('<!--diff2html-css-->', '<style>\n' + cssContent + '\n</style>')
