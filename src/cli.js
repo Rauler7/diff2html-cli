@@ -126,7 +126,7 @@
     var jsUiFilePath = path.resolve(diff2htmlPath, 'dist', 'diff2html-ui.min.js');
     var jsUiContent = utils.readFileSync(jsUiFilePath);
     var lastCommit = 'git rev-parse HEAD~0';
-    var projectName = 'git config --local remote.origin.url';
+    var projectName = 'git config --get remote.origin.url';
     var username = 'git config user.name';
     var commitID1 = utils.runCmd(lastCommit);
     var commitID3 = utils.runCmd(projectName);
