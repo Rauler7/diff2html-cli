@@ -133,7 +133,7 @@
     var gh = require('parse-github-url');
     console.log(commitID3);
     var urlObj = gh(commitID3);
-    var commitURL = "https://github.com/"+urlObj.repo+"/commit/"+commitID1;
+    var commitURL = "https://bitbucket.agile.bns/"+urlObj.repo+"/commit/"+commitID1;
     var finalURL = '<a href="'+commitURL+'">' + commitID1 + '</a>'
     return template
       .replace('<!--diff2html-css-->', '<style>\n' + cssContent + '\n</style>')
